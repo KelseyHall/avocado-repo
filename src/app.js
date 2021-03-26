@@ -5,8 +5,8 @@ import AppRouter from './routers/AppRouter'
 import configureStore from './store/configureStore'
 
 import './firebase/firebase'
-import {addExpense} from './actions/expenses'
-import {setTextFilter} from'./actions/filters'
+import { startSetExpenses } from './actions/expenses'
+import { setTextFilter } from'./actions/filters'
 import getVisibleExpenses from './selectors/expenses'
 import 'normalize.css'
 import './styles/styles.scss'
@@ -22,8 +22,12 @@ const jsx = (
 )
 
 // console.log(store.getState())
+ReactDOM.render(<p>Loading...</p>,document.getElementById('app'))
 
-ReactDOM.render(jsx,document.getElementById('app'))
+store.dispatch(startSetExpenses()).then(()=>{
+    ReactDOM.render(jsx,document.getElementById('app'))
+})
+
 
 
 // store.subscribe(() => {
