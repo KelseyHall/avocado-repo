@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { editExpense, startRemoveExpense } from '../actions/expenses'
+import { startEditExpense, startRemoveExpense } from '../actions/expenses'
 import ExpenseForm from './ExpenseForm'
 
 export class EditExpensePage extends React.Component{
@@ -34,7 +34,7 @@ const mapStateToProps = (state, props) =>({
         expense:state.expenses.find((expense)=> expense.id === props.match.params.id)
 })
 const mapDispatchToProps = (dispatch,props) => ({
-    editExpense: (id, expense) => dispatch(editExpense(id, expense)),
+    editExpense: (id, expense) => dispatch(startEditExpense(id, expense)),
     removeExpense:(data)=> dispatch(startRemoveExpense(data))
 
 })
